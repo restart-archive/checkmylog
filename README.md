@@ -5,7 +5,9 @@ This is a personal project and is not intended to use in a harmful way. I am not
 This project is a high level Go API for making or / checking cookie contents.
 
 ## Usage
-### You may simply copy and paste the following code to your project. (main.go)
+### Run:
+`go get github.com/restartfu/checkmylog/checkmylog`
+### You may then simply copy and paste the following code to your project. (main.go)
 ```go
 package main
 
