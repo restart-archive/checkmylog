@@ -2,8 +2,8 @@ package checkmylog
 
 import (
 	"fmt"
-	http "github.com/saucesteals/fhttp"
 	"io/fs"
+	"math/rand"
 	"net/url"
 	"os"
 	"strings"
@@ -42,12 +42,8 @@ func (l Log) Check(checkers ...Checker) {
 		}
 		l.transport.Proxy = nil
 
-		if c.Options().Proxied {
-			l.transport.Proxy = http.ProxyURL(&url.URL{
-				Scheme: "http",
-				Host:   "w",
-				User:   url.UserPassword("x", "y"),
-			})
+		if c.Options().Proxied && len(proxies) > 0 {
+			l.transport.Proxy = newTransportWithProxy(proxies[rand.Intn(len(proxies))]).Proxy
 		}
 		attempts++
 
